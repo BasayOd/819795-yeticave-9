@@ -40,6 +40,13 @@ $desk =[
     ]
     ];
 $user_name = 'Vasil Litvinenko'; // укажите здесь ваше имя
+function form_price($summ){
+    $summ=ceil($summ);
+    if ($summ>=1000){
+        $summ=number_format($summ, 0, '',' ');
+    }
+    return $summ.=' ₽';
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -108,7 +115,7 @@ $user_name = 'Vasil Litvinenko'; // укажите здесь ваше имя
             <h2>Открытые лоты</h2>
         </div>
         <ul class="lots__list">
-            <!--заполните этот список из массива с товарами-->
+            
             <?php foreach ( $desk as $key => $value) {?>
             
             <li class="lots__item lot">
@@ -121,7 +128,7 @@ $user_name = 'Vasil Litvinenko'; // укажите здесь ваше имя
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?= $value['price'] ?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?= form_price($value['price']) ?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
@@ -139,7 +146,7 @@ $user_name = 'Vasil Litvinenko'; // укажите здесь ваше имя
     <nav class="nav">
         <ul class="nav__list container">
             
-            <!--tut categories-->
+        
             <?php foreach ($categories as $key => $value) {?>
             <li class="nav__item">
                 <a href="pages/all-lots.html"><?= $value ?></a>
