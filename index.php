@@ -1,5 +1,4 @@
 <?php
-$is_auth = rand(0, 1);
 $categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
 $products=[
     [
@@ -48,6 +47,14 @@ function form_price($summ){
     }
     return $summ.=' <b class="rub">р</b>'; 
 }
-require_once('templates/layout.php');
-require_once('templates/index.php');
+
+
+require_once ('functions.php');
+$page_content=include_template('index.php',['categories'=>$categories, 'products'=>$products]);
+$layout_content=include_template('layout.php',
+        ['content'=>$page_content,
+         'title'=>$title,
+         'user_name'=>$user_name,
+         'categories'=>$categories]);
+print($layout_content);
 ?>
