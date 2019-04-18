@@ -31,11 +31,7 @@
                             <span class="lot__amount">Стартовая цена</span>
                             <span class="lot__cost"><?= form_price(strip_tags($value['price'])) ?></span>
                         </div>
-            <div class="lot__timer timer 
-                 <?php if (check_hour()) {?>
-                      timer--finishing">
-                 <?php } else {?>
-                       "> <?php } ?>
+            <div class="lot__timer timer<?=check_alarm()?>">
                             <?= show_remaining_time() ?>
                         </div>
                     </div>
