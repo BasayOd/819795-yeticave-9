@@ -23,7 +23,7 @@
 
         <nav class="user-menu">
 
-            <?php
+            <?php 
             if (rand(0, 1) == 1) { ?>
                 <div class="user-menu__logged">
                     <p><?= $user_name ?></p>

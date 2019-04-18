@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Europe/Kiev');
 $categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
 $products=[
     [
@@ -48,7 +49,14 @@ function form_price($summ){
     return $summ.=' <b class="rub">р</b>'; 
 }
 
-
+function show_remaining_time(){
+$difference=date_diff(date_create('now'),date_create('tomorrow'));
+return date_interval_format($difference, '%H:%I');
+}
+function check_hour(){
+   return  (strtotime('tomorrow')-strtotime('now'))/3600<1;
+}
+print check_hour();
 require_once ('functions.php');
 $page_content=include_template('index.php',['categories'=>$categories, 'products'=>$products]);
 $layout_content=include_template('layout.php',
