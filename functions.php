@@ -29,7 +29,7 @@ function show_remaining_time(){
     return date_interval_format($difference, '%H:%I');
 }
 function check_alarm($time=3600){
-    if ((strtotime('tomorrow')-strtotime('now'))/$time<1){
+    if ((strtotime('tomorrow')-strtotime('now'))/$time<=1){
         return ' timer--finishing';
     };
 }
