@@ -27,7 +27,7 @@ CREATE TABLE lots (
 
 CREATE TABLE bets (
                       id INT AUTO_INCREMENT PRIMARY KEY,
-                      create_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                      create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                       amount FLOAT,
                       user_id INT,
                       lot_id INT
