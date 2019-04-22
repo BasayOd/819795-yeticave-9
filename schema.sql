@@ -1,6 +1,6 @@
 CREATE DATABASE yeticave
     DEFAULT CHARACTER SET utf8
-    DEFAULT  COLLATE  ut8_general_ci;
+    DEFAULT  COLLATE  utf8_general_ci;
 USE yeticave;
 CREATE TABLE categories (
                             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -27,7 +27,7 @@ CREATE TABLE lots (
 
 CREATE TABLE bets (
                       id INT AUTO_INCREMENT PRIMARY KEY,
-                      create TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                      create_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                       amount FLOAT,
                       user_id INT,
                       lot_id INT
