@@ -38,8 +38,6 @@ CREATE TABLE users (
                        name CHAR(128)  UNIQUE,
                        password CHAR(64),
                        avatar CHAR(128),
-                       contact CHAR(128),
-                       lot_id CHAR(128),
-                       bet_id CHAR(128)
+                       contact CHAR(128)
 
 );
