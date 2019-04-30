@@ -4,11 +4,12 @@ $user_name = 'Vasil Litvinenko'; // укажите здесь ваше имя
 $title = "Главная";
 require_once ('data.php');
 require_once ('functions.php');
-$page_content=include_template('index.php',['categories'=>$categories, 'products'=>$products]);
+require_once ('init.php');
+$page_content=include_template('index.php',['categories'=>$cats, 'products'=>$lots]);
 $layout_content=include_template('layout.php',
         ['content'=>$page_content,
          'title'=>$title,
          'user_name'=>$user_name,
-         'categories'=>$categories]);
+         'categories'=>$cats]);
 print($layout_content);
 ?>
