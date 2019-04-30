@@ -40,7 +40,8 @@ INSERT INTO bets
  LEFT JOIN bets b ON b.user_id=l.winner_id
  JOIN categories c ON l.category_id=c.id WHERE l.dt_end>CURRENT_TIMESTAMP;
  
- SELECT * FROM lots WHERE id='2';
+ SELECT * FROM lots
+ LEFT JOIN categories c ON lots.category_id=c.id WHERE lots.id='2';
 
 UPDATE lots SET name="новое имя лота" WHERE id='2';
 
