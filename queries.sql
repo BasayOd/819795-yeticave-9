@@ -45,6 +45,6 @@ INSERT INTO bets
 
 UPDATE lots SET name="новое имя лота" WHERE id='2';
 
-SELECT * FROM bets WHERE lot_id='1' ORDER BY amount;
+SELECT * FROM bets WHERE lot_id='1' ORDER BY amount DESC;
 
 
