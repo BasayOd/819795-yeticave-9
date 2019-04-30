@@ -8,9 +8,7 @@ CREATE TABLE categories (
                             icon CHAR(64)
 
 );
-INSERT INTO categories
-(name,icon) VALUES ('Доски и лыжи', 'boards'),('Крепления', 'attachment'),
-                                   ('Ботинки', 'boots'), ('Одежда', 'clothing'), ('Инструменты', 'tools'), ('Разное', 'other');
+
 CREATE TABLE lots (
                       id INT AUTO_INCREMENT PRIMARY KEY,
                       dt_create TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -37,11 +35,9 @@ CREATE TABLE users (
                        id INT AUTO_INCREMENT PRIMARY KEY,
                        dt_rg TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                        email CHAR(128) UNIQUE,
-                       name CHAR  UNIQUE,
+                       name CHAR(128)  UNIQUE,
                        password CHAR(64),
                        avatar CHAR(128),
-                       contact CHAR(128),
-                       lot_id CHAR(128),
-                       bet_id CHAR(128)
+                       contact CHAR(128)
 
 );
