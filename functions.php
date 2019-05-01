@@ -33,4 +33,16 @@ function check_alarm($time=3600){
         return ' timer--finishing';
     };
 }
+function get_data_all($link, $str){
+  $result=mysqli_query($link, $str );
+    if ($result == false) {
+        print("Произошла ошибка при выполнении запроса");
+    }
+    $data=mysqli_fetch_all($result, MYSQLI_ASSOC );
+    if (!$data){
+        print("Произошла ошибка при выполнении запроса");
+    }
+    return $data;
+}
+
 ?>
