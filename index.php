@@ -5,6 +5,10 @@ $title = "Главная";
 require_once ('data.php');
 require_once ('functions.php');
 require_once ('init.php');
+require_once ('helpers.php');
+$lots=get_data_all($link,'SELECT l.name, c.name AS category, l.price, l.img AS url FROM lots l 
+ LEFT JOIN categories c ON l.category_id=c.id ORDER BY l.dt_create ASC ;');
+$cats=get_data_all($link,'SELECT name, icon FROM categories');
 $page_content=include_template('index.php',['categories'=>$cats, 'products'=>$lots]);
 $layout_content=include_template('layout.php',
         ['content'=>$page_content,
