@@ -31,6 +31,7 @@ function is_date_valid(string $date) : bool {
 function db_get_prepare_stmt($link, $sql, $data = []) {
     $stmt = mysqli_prepare($link, $sql);
 
+
     if ($stmt === false) {
         $errorMsg = 'Не удалось инициализировать подготовленное выражение: ' . mysqli_error($link);
         die($errorMsg);
@@ -69,7 +70,6 @@ function db_get_prepare_stmt($link, $sql, $data = []) {
             die($errorMsg);
         }
     }
-
     return $stmt;
 }
 

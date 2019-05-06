@@ -5,6 +5,7 @@
  * @param array $data Ассоциативный массив с данными для шаблона
  * @return string Итоговый HTML
  */
+require_once ('helpers.php');
 function include_template($name, array $data = []) {
     $name = 'templates/' . $name;
     $result = '';
@@ -32,5 +33,19 @@ function check_alarm($time=3600){
     if ((strtotime('tomorrow')-strtotime('now'))/$time<=1){
         return ' timer--finishing';
     };
+}
+
+function get_data_all($link, $str, $data=[]){
+    $stmt=db_get_prepare_stmt($link, $str, $data);
+    mysqli_stmt_execute($stmt);
+    $res=mysqli_stmt_get_result($stmt);
+    if ($res == false) {
+        print("Произошла ошибка при выполнении запроса1");
+    }
+    $result=mysqli_fetch_all($res, MYSQLI_ASSOC );
+    if (!$result){
+        print("Произошла ошибка при выполнении запроса2");
+    }
+    return $result;
 }
 ?>
