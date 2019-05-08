@@ -3,7 +3,7 @@ require_once ('functions.php');
 require_once ('init.php');
 require_once ('helpers.php');
 date_default_timezone_set('Europe/Kiev');
-if(is_numeric($_GET['id'])){$id_number=$_GET['id'];
+if(isset($_GET['id'])&&is_numeric($_GET['id'])){$id_number=$_GET['id'];
 }else{
 $id_number='0';}
 $lots=get_data_all($link,'SELECT l.*, c.name AS category FROM lots l 
