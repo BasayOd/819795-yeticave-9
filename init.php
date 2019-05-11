@@ -1,5 +1,5 @@
 <?php
-$link=mysqli_connect('localhost', 'root', 'Ihamop97', 'yeticave');
+$link=mysqli_connect('localhost', 'root', '', 'yeticave');
 if (!$link){
     print('connect error'.mysqli_connect_error());
 }

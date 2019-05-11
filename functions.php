@@ -5,7 +5,6 @@
  * @param array $data Ассоциативный массив с данными для шаблона
  * @return string Итоговый HTML
  */
-require_once ('helpers.php');
 function include_template($name, array $data = []) {
     $name = 'templates/' . $name;
     $result = '';
@@ -25,14 +24,15 @@ function form_price($summ){
     }
     return $summ.=' <b class="rub">р</b>';
 }
-function show_remaining_time(){
-    $difference=date_diff(date_create('now'),date_create('tomorrow'));
-    return date_interval_format($difference, '%H:%I');
+function show_remaining_time( $tomorrow='tomorrow',$now='now'){
+    $difference=date_diff(date_create($now),date_create($tomorrow));
+    return date_interval_format($difference, '%D %H:%I');
 }
-function check_alarm($time=3600){
-    if ((strtotime('tomorrow')-strtotime('now'))/$time<=1){
+function check_alarm($date='tomorrow', $time=3600){
+    if ((strtotime($date)-strtotime('now'))/$time<=1){
         return ' timer--finishing';
     };
+
 }
 
 function get_data_all($link, $str, $data=[]){
@@ -43,9 +43,18 @@ function get_data_all($link, $str, $data=[]){
         print("Произошла ошибка при выполнении запроса1");
     }
     $result=mysqli_fetch_all($res, MYSQLI_ASSOC );
-    if (!$result){
-        print("Произошла ошибка при выполнении запроса2");
+
+    return $result;
+}
+function get_data_one($link, $str, $data=[]){
+    $stmt=db_get_prepare_stmt($link, $str, $data);
+    mysqli_stmt_execute($stmt);
+    $res=mysqli_stmt_get_result($stmt);
+    if ($res == false) {
+        print("Произошла ошибка при выполнении запроса1");
     }
+    $result=mysqli_fetch_assoc($res);
+
     return $result;
 }
 ?>
