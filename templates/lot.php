@@ -11,44 +11,24 @@
 <div class="page-wrapper">
     <?= $header ?>
         <section class="lot-item container">
-            <h2><?= $lot['name'] ?></h2>
+            <h2><?= strip_tags($lot['name']) ?></h2>
             <div class="lot-item__content">
                 <div class="lot-item__left">
                     <div class="lot-item__image">
-                        <img src="<?= $lot['img'] ?>" width="730" height="548" alt="Сноуборд">
+                        <img src="<?= $lot['img'] ?>" width="730" height="548" alt="<?=strip_tags($lot['name'])?>">
                     </div>
-                    <p class="lot-item__category">Категория: <span><?= $lot['category'] ?></span></p>
-                    <p class="lot-item__description"><?= $lot['description'] ?></p>
+                    <p class="lot-item__category">Категория: <span><?= strip_tags($lot['category']) ?></span></p>
+                    <p class="lot-item__description"><?= strip_tags($lot['description']) ?></p>
                 </div>
                 <div class="lot-item__right">
-                    <div class="lot-item__state">
-                        <div class="lot-item__timer timer <?= check_alarm($lot['dt_end'])?>">
-                            <?= show_remaining_time($lot['dt_end']) ?>
-                        </div>
-                        <div class="lot-item__cost-state">
-                            <div class="lot-item__rate">
-                                <span class="lot-item__amount">Текущая цена</span>
-                                <span class="lot-item__cost"><?= form_price($lot['price'])?></span>
-                            </div>
-                            <div class="lot-item__min-cost">
-                                Мин. ставка <span><?=  $lot['price']+$lot['bet_step'] ?> р</span>
-                            </div>
-                        </div>
-                        <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post" autocomplete="off">
-                            <p class="lot-item__form-item form__item form__item--invalid">
-                                <label for="cost">Ваша ставка</label>
-                                <input id="cost" type="text" name="cost" placeholder="12 000">
-                                <span class="form__error">Введите наименование лота</span>
-                            </p>
-                            <button type="submit" class="button">Сделать ставку</button>
-                        </form>
+                    <?= $bet ?>
                     </div>
                     <div class="history">
                         <h3>История ставок (<span><?= count($bets)?></span>)</h3>
                         <table class="history__list">
                             <?php foreach($bets as $key=>$value){  ?>
                                 <tr class="history__item">
-                                    <td class="history__name"><?= $value['user_name']?></td>
+                                    <td class="history__name"><?= strip_tags($value['user_name'])?></td>
                                     <td class="history__price"><?= $value['amount']?></td>
                                     <td class="history__time"><?= $value['create_at']?></td>
                                 </tr>

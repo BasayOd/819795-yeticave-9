@@ -46,4 +46,15 @@ function get_data_all($link, $str, $data=[]){
 
     return $result;
 }
+function get_data_one($link, $str, $data=[]){
+    $stmt=db_get_prepare_stmt($link, $str, $data);
+    mysqli_stmt_execute($stmt);
+    $res=mysqli_stmt_get_result($stmt);
+    if ($res == false) {
+        print("Произошла ошибка при выполнении запроса1");
+    }
+    $result=mysqli_fetch_assoc($res);
+
+    return $result;
+}
 ?>
