@@ -12,7 +12,7 @@
 <div class="page-wrapper">
 
     <?= $header ?>
-        <form class="form form--add-lot container form--invalid" action="add.php" method="post"> <!-- form--invalid -->
+        <form class="form form--add-lot container form--invalid" action="add.php" method="post" enctype="multipart/form-data" > <!-- form--invalid -->
             <h2>Добавление лота</h2>
             <div class="form__container-two">
                 <div class="form__item form__item--invalid"> <!-- form__item--invalid -->
@@ -22,11 +22,11 @@
                 </div>
                 <div class="form__item">
                     <label for="category">Категория <sup>*</sup></label>
-                    <select id="category" name="category">
+                    <select id="category" name="category" >
                         <?php foreach($categories as $value)?>
                         <option>Выберите категорию</option>
                         <?php foreach($categories as $value){?>
-                        <option><?= $value['name'] ?></option>
+                        <option value="<?=$value['id']?>"><?= strip_tags($value['name']) ?></option>
                         <?php } ?>
                     </select>
                     <span class="form__error">Выберите категорию</span>
@@ -40,7 +40,7 @@
             <div class="form__item form__item--file">
                 <label>Изображение <sup>*</sup></label>
                 <div class="form__input-file">
-                    <input class="visually-hidden" type="file" id="lot-img" value="">
+                    <input class="visually-hidden" type="file" id ="lot-img" name="lot-img" value="">
                     <label for="lot-img">
                         Добавить
                     </label>
